@@ -8,6 +8,20 @@ public class CGameOver : MonoBehaviour {
 	void Start () {
 		
 	}
+
+	/// <summary>
+	/// Inits the game over.
+	/// </summary>
+	public void initGameOver() {
+		// Rigidbodyをrigsに全て列挙する
+		Rigidbody[] rigs = 
+			GameObject.FindObjectsOfType(typeof(Rigidbody)) as Rigidbody[];
+
+		// すべてのRigidbodyを休眠させる
+		foreach(Rigidbody rig in rigs) {
+			rig.Sleep ();
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {

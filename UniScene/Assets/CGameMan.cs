@@ -48,6 +48,7 @@ public class CGameMan : MonoBehaviour {
 			iNextScene = SC.SC_NONE;
 			switch (iNowScene) {
 			case SC.SC_TITLE:
+				goGame.BroadcastMessage("DestroyMe",0,SendMessageOptions.DontRequireReceiver);
 				goTitle.SetActive(true);
 				goGame.SetActive(false);
 				break;
@@ -56,9 +57,11 @@ public class CGameMan : MonoBehaviour {
 				goTitle.SetActive(false);
 				goGame.SetActive(true);
 				goGameOver.SetActive(false);
+				goGame.SendMessage("initGame");
 				break;
 			case SC.SC_GAMEOVER:
 				goGameOver.SetActive(true);
+				goGameOver.SendMessage("initGameOver");
 				break;
 			}
 		}
