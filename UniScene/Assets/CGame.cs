@@ -11,11 +11,13 @@ public class CGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.A)) {
-			goGameMan.SendMessage("addScore",100);
-		}
-		else if (Input.GetKeyDown(KeyCode.G)) {
-			goGameMan.SendMessage("ChangeScene",CGameMan.SC.SC_GAMEOVER);
+		if (goGameMan.GetComponent<CGameMan>().iNowScene == CGameMan.SC.SC_GAME) {
+			if (Input.GetKeyDown(KeyCode.A)) {
+				goGameMan.SendMessage("addScore",100);
+			}
+			else if (Input.GetKeyDown(KeyCode.G)) {
+				goGameMan.SendMessage("ChangeScene",CGameMan.SC.SC_GAMEOVER);
+			}
 		}
 	}
 }
